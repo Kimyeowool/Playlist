@@ -2,8 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정 추가 -->
   <title>유튜브 플레이리스트</title>
   <style>
+    /* 기본 스타일 */
     body {
       font-family: Arial, sans-serif;
       background-color: #111;
@@ -11,6 +13,7 @@
       display: flex;
       justify-content: space-between;
       padding: 20px;
+      flex-wrap: wrap; /* 화면 크기에 따라 자동으로 줄 바꿈 */
     }
 
     .left-section, .right-section {
@@ -76,6 +79,43 @@
 
     .playlist li:hover {
       background-color: #444;
+    }
+
+    /* 모바일 화면을 위한 미디어 쿼리 */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column; /* 모바일에서는 세로로 배치 */
+        padding: 10px;
+      }
+
+      .left-section, .right-section {
+        width: 100%; /* 모바일에서는 전체 너비 사용 */
+        margin-bottom: 20px;
+      }
+
+      .player iframe {
+        width: 100%;
+        height: 200px; /* 모바일 화면에서는 영상 크기를 줄여서 표시 */
+      }
+
+      .controls button {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .input-container input,
+      .input-container button {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%; /* 모바일에서 입력창과 버튼이 화면 가득 차게 */
+      }
+    }
+
+    /* 작은 화면에 대한 추가 설정 */
+    @media (max-width: 480px) {
+      .player iframe {
+        height: 150px; /* 더 작은 화면에서는 플레이어 높이를 줄임 */
+      }
     }
   </style>
 </head>
